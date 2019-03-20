@@ -18,8 +18,6 @@
         console.log("Notification permission status:", status);
       });
 
-      subscribeUser;
-
       navigator.serviceWorker
         .register("/meetup.notify/worker.js")
         .then(reg => {
@@ -47,7 +45,15 @@
                 fetch(
                   "https://server-push-5e372.firebaseio.com/rest/saving-data/fireblog/users.json",
                   { method: "post", body: JSON.stringify(sub) }
-                );
+                ).then(data => {
+                  document.getElementById("root").innerHTML =
+                    "<h1>Redirecting back to yammer...</h1>";
+                  setTimeout(
+                    () =>
+                      (window.location =
+                        "https://www.yammer.com/talentica.com/")
+                  );
+                });
               })
               .catch(function(e) {
                 if (Notification.permission === "denied") {
@@ -60,6 +66,9 @@
         }
       }
     </script>
-    <div id="root"></div>
+    <div id="root">
+      <h2>Allow for notification</h2>
+      Sorry for crude UI! Work in progress
+    </div>
   </body>
 </html>
