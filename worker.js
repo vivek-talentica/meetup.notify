@@ -21,5 +21,5 @@ self.addEventListener("push", function(e) {
       primaryKey: 1,
     },
   };
-  e.waitUntil(self.registration.showNotification("Hello world!", options));
+  e.waitUntil(self.registration.showNotification("JS Meetup", options));
 });
