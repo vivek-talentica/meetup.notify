@@ -21,7 +21,7 @@
       subscribeUser;
 
       navigator.serviceWorker
-        .register("/worker.js")
+        .register("/meetup.notify/worker.js")
         .then(reg => {
           reg.pushManager.getSubscription().then(function(sub) {
             if (sub === null) {
